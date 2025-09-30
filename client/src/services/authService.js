@@ -10,4 +10,10 @@ const login = async (username, password) => {
   return token;
 };
 
-export default { login };
+const logout = async (token) => {
+  const response = await http.post("/auth/logout", {token});
+  localStorage.removeItem("token");
+  return response;
+};
+
+export default { login, logout };

@@ -1,6 +1,6 @@
 const { findUser } = require("../models/usersModel");
 const { generateToken } = require("../utils/tokenUtil");
-const { addToken } = require("../services/tokenService");
+const { addToken, findToken, deleteToken } = require("../services/tokenService");
 
 const login = (req, res) => {
     const { username, password } = req.body;
@@ -16,4 +16,18 @@ const login = (req, res) => {
     return res.json({ token });
 };
 
-module.exports = { login };
+const logout = (req, res) => {
+    const { token } = req.body;
+
+    console.log("Got request:", req.body);
+    const isToken = findToken(token);
+    if (!isToken) {
+        return res.status(401).json({ message: "Token not Found" });
+    }
+
+    deleteToken(token);
+
+    return res.json({ token });
+};
+
+module.exports = { login, logout };

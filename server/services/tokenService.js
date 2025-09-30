@@ -12,4 +12,14 @@ const getTokens = () => {
     return activeTokens;
 };
 
-module.exports = { addToken, getTokens };
+
+const findToken = (token) => {
+    return activeTokens.includes(token);
+};
+
+const deleteToken = (token) => {
+    activeTokens = activeTokens.filter(t => t !== token);
+    console.log("delete", activeTokens);
+};
+
+module.exports = { addToken, getTokens, findToken, deleteToken };

@@ -1,10 +1,10 @@
 import BooksList from "./components/booksList.js";
-import Login from "./components/Login.js";
+import Auth from "./components/Auth.js";
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      <Auth />
       <BooksList />
     </div>
   );
