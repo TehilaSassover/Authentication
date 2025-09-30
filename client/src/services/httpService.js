@@ -27,3 +27,5 @@ export const post = async (url, payload) => {
     throw error;
   }
 };
+
+export default { get, post };
