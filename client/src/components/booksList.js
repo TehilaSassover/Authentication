@@ -5,10 +5,14 @@ import { getAllBooks, addBook } from "../services/booksService";
 export default function BooksList() {
   const [books, setBooks] = useState([]);
 
-    const handleFetchBooks = async() =>{
-      const data = await getAllBooks();
-      setBooks(data);
-    };
+  const handleFetchBooks = async () => {
+    const data = await getAllBooks();
+    if (!data) {
+      alert("You need to login first!");
+      return;
+    }
+    setBooks(data);
+  };
 
   // const handleAddBook = async () => {
   //   const newBook = { id: Date.now(), title: "New Book" };

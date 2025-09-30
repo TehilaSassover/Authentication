@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { getBooks, getBook, createBook, editBook, removeBook } = require('../controllers/booksController.js');
+const { isLoggedIn } = require('../middlewares/authMiddleware.js');
 
-// GET all books
-router.get('/', getBooks);
+// GET all books - protected
+router.get('/', isLoggedIn, getBooks);
 
 // // GET book by id
 // router.get('/:id', getBook);
